@@ -23,9 +23,9 @@ Decompor uma tarefa que executa processamento complexo em uma série de elemento
 
 ## <a name="context-and-problem"></a>Contexto e problema
 
-É necessário um aplicativo para executar uma variedade de tarefas de complexidade variável nas informações que são processadas. Uma abordagem simples mas inflexível para implementar um aplicativo é realizar esse processamento como um módulo monolítico. No entanto, essa abordagem provavelmente reduzirá as oportunidades para refatorar o código, otimizá-lo ou reutilizá-lo se partes do mesmo processamento forem necessárias em outros lugares no aplicativo.
+Em uma aplicação é necessário executar uma variedade de tarefas de complexidade variável nas informações que são processadas. Uma abordagem simples mas inflexível para implementar um aplicativo é realizar esse processamento como um módulo monolítico. No entanto, essa abordagem provavelmente reduzirá as oportunidades para refatorar o código, otimizá-lo ou reutilizá-lo se partes do mesmo processamento forem necessárias em outros lugares na aplicação.
 
-A figura ilustra os problemas com os dados de processamento usando a abordagem monolítica. Um aplicativo recebe e processa dados de duas fontes. Os dados de cada fonte são processados por um módulo separado que executa uma série de tarefas para transformar esses dados, antes de passar o resultado para a lógica de negócios do aplicativos.
+A figura ilustra os problemas com os dados de processamento usando a abordagem monolítica. Uma aplicação recebe e processa dados de duas fontes. Os dados de cada fonte são processados por um módulo separado que executa uma série de tarefas para transformar esses dados, antes de passar o resultado para a lógica de negócios da aplicação.
 
 ![Figura 1 - Uma solução implementada utilizando módulos monolíticos](./_images/pipes-and-filters-modules.png)
 
@@ -40,9 +40,9 @@ Dividir o processamento necessário para cada stream em um conjunto de component
 ![Figura 2 - Uma solução implementada usando pipes e filtros](./_images/pipes-and-filters-solution.png)
 
 
-O tempo necessário para processar uma solicitação única depende da velocidade do filtro lento no pipeline. Um ou mais filtros podem ser um gargalo, especialmente se um grande número de solicitações aparecer em um stream de uma determinada fonte de dados. Uma vantagem chave da estrutura de pipeline é que ele oferece oportunidades para executar instâncias paralelas de filtros lentos, permitindo que o sistema espalhe a carga e melhore a taxa de transferência.
+O tempo necessário para processar uma solicitação única depende da velocidade do filtro mais lento no pipeline. Um ou mais filtros podem ser um gargalo, especialmente se um grande número de solicitações aparecer em um stream de uma determinada fonte de dados. Uma vantagem chave da estrutura de pipeline é que ele oferece oportunidades para executar instâncias paralelas de filtros lentos, permitindo que o sistema espalhe a carga e melhore a taxa de transferência.
 
-Os filtros que compõem um pipeline podem ser executados em diferentes computadores, permitindo que sejam escalados de forma independente e aproveitem a elasticidade que muitos ambientes de nuvem fornecem. Um filtro que é computacionalmente intensivo pode ser executado em hardware de alto desempenho, enquanto outros filtros menos exigentes podem ser hospedados em hardware de mercadoria menos caro. Os filtros não precisam estar no mesmo centro de dados ou localização geográfica, o que permite que cada elemento em um pipeline seja executado em um ambiente próximo dos recursos necessários.  A próxima figura mostra um exemplo aplicado ao pipeline para os dados da Fonte 1.
+Os filtros que compõem um pipeline podem ser executados em diferentes computadores, permitindo que sejam escalados de forma independente e aproveitem a elasticidade que muitos ambientes de nuvem fornecem. Um filtro que é computacionalmente intensivo pode ser executado em hardware de alto desempenho, enquanto outros filtros menos exigentes podem ser hospedados em hardware de menor custo. Os filtros não precisam estar no mesmo centro de dados ou localização geográfica, o que permite que cada elemento em um pipeline seja executado em um ambiente próximo dos recursos necessários. A próxima figura mostra um exemplo aplicado ao pipeline para os dados da Fonte 1.
 
 ![A Figura 3 mostra um exemplo aplicado ao pipeline para os dados da Fonte 1](./_images/pipes-and-filters-load-balancing.png)
 
