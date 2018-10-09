@@ -23,7 +23,7 @@ Decompor uma tarefa que executa processamento complexo em uma série de elemento
 
 ## <a name="context-and-problem"></a>Contexto e problema
 
-Em uma aplicação é necessário executar uma variedade de tarefas de complexidade variável nas informações que são processadas. Uma abordagem simples mas inflexível para implementar um aplicativo é realizar esse processamento como um módulo monolítico. No entanto, essa abordagem provavelmente reduzirá as oportunidades para refatorar o código, otimizá-lo ou reutilizá-lo se partes do mesmo processamento forem necessárias em outros lugares na aplicação.
+Em uma aplicação é necessário executar uma variedade de tarefas de complexidade variável nas informações que são processadas. Uma abordagem simples mas inflexível para implementar uma aplicação é realizar esse processamento como um módulo monolítico. No entanto, essa abordagem provavelmente reduzirá as oportunidades para refatorar o código, otimizá-lo ou reutilizá-lo se partes do mesmo processamento forem necessárias em outros lugares na aplicação.
 
 A figura ilustra os problemas com os dados de processamento usando a abordagem monolítica. Uma aplicação recebe e processa dados de duas fontes. Os dados de cada fonte são processados por um módulo separado que executa uma série de tarefas para transformar esses dados, antes de passar o resultado para a lógica de negócios da aplicação.
 
@@ -70,20 +70,20 @@ Os seguintes pontos devem ser considerados ao decidir como implementar esse padr
 ## <a name="when-to-use-this-pattern"></a>Quando usar esse padrão
 
 Use esse padrão quando:
-- O processamento exigido por um aplicativo pode ser facilmente dividido em um conjunto de etapas independentes.
+- O processamento exigido por uma aplicação pode ser facilmente dividido em um conjunto de etapas independentes.
 
-- As etapas de processamento executadas por um aplicativo têm requisitos de escalabilidade diferentes.
+- As etapas de processamento executadas por uma aplicação têm requisitos de escalabilidade diferentes.
 
     >  É possível agrupar filtros que devem escalar no mesmo processo. Para obter mais informações, consulte o [padrão de Consolidação de Recursos de Computação](compute-resource-consolidation.md).
 
-- É necessária flexibilidade para permitir a reordenação das etapas de processamento executadas por um aplicativo ou a capacidade de adicionar e remover etapas.
+- É necessária flexibilidade para permitir a reordenação das etapas de processamento executadas por uma aplicação ou a capacidade de adicionar e remover etapas.
 
 - O sistema pode se beneficiar de distribuir o processamento para etapas em diferentes servidores.
 
 - É necessária uma solução confiável que minimize os efeitos da falha em uma etapa, enquanto os dados estão sendo processados.
 
 Esse padrão pode não ser útil quando:
-- As etapas de processamento executadas por um aplicativo não são independentes ou devem ser realizadas juntas como parte da mesma transação.
+- As etapas de processamento executadas por uma aplicação não são independentes ou devem ser realizadas juntas como parte da mesma transação.
 
 - A quantidade de contexto ou informações de estado exigidas por uma etapa torna esta abordagem ineficiente. Pode ser possível persistir informações de estado em um banco de dados, mas não utilize essa estratégia se a carga adicional no banco de dados causar contenção excessiva.
 
